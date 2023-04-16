@@ -50,11 +50,11 @@ namespace Arbeitszeit
             *   }
             *   Macht zwar das Selbe, aber unschön.
             */
-            if (_zeit.TotalHours > 6.5)
+            if (_zeit.TotalHours > 6.5)  //Checkt ob die ZeitSpanne über 6,5 stunden ist
             {
-                _zeit = _zeit.Subtract(TimeSpan.FromMinutes(30));
+                _zeit = _zeit.Subtract(TimeSpan.FromMinutes(30)); //"einfache" subtrahier methode, mittels welche direkt  von den Minuten 30 abgezogen werden können
             }
-            if (_zeit.TotalHours > 12)
+            if (_zeit.TotalHours > 12)  //Wenn mehr als 12 Stunden, Fehlermeldung
             {
                 throw new ArgumentException("Zeitspanne kann nicht über 12 Stunden sein\n");
             }

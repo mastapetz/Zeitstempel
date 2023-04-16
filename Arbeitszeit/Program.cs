@@ -32,6 +32,11 @@
             //Console.WriteLine(StempelPaar4);
 
             Console.WriteLine("===========================================================================");
+            /*
+             * Erste Variante, bevor ich wusste, wie man die DateTime Parmeter richtig übergibt)
+             * Führt zum selben ergebnis und kann verwendet werden, wenn man den Benutzer die Zeiten selber eingeben lässt
+             * damit die Strings richtig ins DateTime Format verwandelt werden können
+             */
             //unter 6.5 stunden ✔
             DateTime eingangStempelA1 = DateTime.Parse("9:00");
             DateTime ausgangsStempelA1 = DateTime.Parse("15:00");
