@@ -9,45 +9,75 @@ namespace Arbeitszeit
     internal class ArbeitsZeitKlasse
     {
         //Anfangszeit
-        public DateTime _start;
+        private DateTime _start;
         public DateTime Start
         {
-            get; set;
+            get { return _start; }
+            set
+            {
+                if (_end != default(DateTime) && value > _end)  //if (value > _end) führte dazu, das alle Startzeiten als nach Endzeiten gesehen wurden
+                {
+                    throw new ArgumentException("Startzeit darf nicht nach Endzeit sein\n");
+                }
+                _start = value;
+            }
         }
 
 
         //Endzeit
-        public DateTime _end;
+        private DateTime _end;
         public DateTime End
         {
             get { return _end; }
             set
             {
-                //if (_start > value)
-
-                if (_start.Hour > _end.Hour)
+                if (_start > value)  //if (value < _start) wirft selben fehler wie Zeile 18 wenn nicht erweitet
                 {
-                    throw new ArgumentException("Falsche Zeiteingabe");
+                    throw new ArgumentException("Endzeit darf nicht vor Startzeit sein\n");
                 }
                 _end = value;
             }
         }
         //Zeitspanne
 
-        internal TimeSpan _zeit;
-        internal TimeSpan Zeit { get; }
+        private TimeSpan _zeit()
+        {
+            TimeSpan _zeit = _end - _start;
+            /*
+            * if (_zeit > TimeSpan.Parse("6:30"))
+            *   {
+            *        _zeit -= TimeSpan.Parse("0:30");
+            *   }
+            *   Macht zwar das Selbe, aber unschön.
+            */
+            if (_zeit.TotalHours > 6.5)
+            {
+                _zeit = _zeit.Subtract(TimeSpan.FromMinutes(30));
+            }
+            if (_zeit.TotalHours > 12)
+            {
+                throw new ArgumentException("Zeitspanne kann nicht über 12 Stunden sein\n");
+            }
+            return _zeit;
+        }
+        public TimeSpan Zeit
+        {
+            get { return _zeit(); }
+        }
 
         //Konstruktor
 
         internal ArbeitsZeitKlasse(DateTime startZeit, DateTime endZeit)
         {
-            _start = startZeit;
-            _end = endZeit;
-            _zeit = _end - _start;
-            if (_zeit > TimeSpan.Parse("6:30"))
-            {
-                _zeit -= TimeSpan.Parse("0:30");
-            }
+            /*
+            * //_start = startZeit;
+            * //_end = endZeit;
+            * Wenn wie oben geschrieben, werden wird Start und End ignoriert
+            * wodurch nie kontrolliert wird ob die Zeiten stimmen
+            */
+            Start = startZeit;
+            End = endZeit;
+
 
         }
 
@@ -55,7 +85,7 @@ namespace Arbeitszeit
 
         public override string ToString()
         {
-            return $"Eingangszeit: {_start}  Endzeit: {_end} Dauer: {_zeit}";
+            return $"Eingangszeit: {_start}  Endzeit: {_end} Dauer: {_zeit()}";
         }
 
     }
