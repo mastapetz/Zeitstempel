@@ -14,22 +14,58 @@ namespace AmpelHW
             //von Verkehrsampel ein
         }
 
+
+        public static VerkehrsAmpel operator ++(VerkehrsAmpel vAmpel)
+        {
+            switch (vAmpel.AmpelFarbe)
+            {
+                case AmpelZustand.Rot:
+                    vAmpel.AmpelFarbe = AmpelZustand.Gelb;
+                    break;
+                case AmpelZustand.Gelb:
+                    vAmpel.AmpelFarbe = AmpelZustand.Gruen;
+                    break;
+                case AmpelZustand.Gruen:
+                    vAmpel.AmpelFarbe = AmpelZustand.Gruenblinken;
+                    break;
+                case AmpelZustand.Gruenblinken:
+                    vAmpel.AmpelFarbe = AmpelZustand.GruenzuGelb;
+                    break;
+                case AmpelZustand.GruenzuGelb:
+                    vAmpel.AmpelFarbe = AmpelZustand.GelbzuRot;
+                    break;
+                case AmpelZustand.GelbzuRot:
+                    vAmpel.AmpelFarbe = AmpelZustand.Rot;
+                    break;
+                default:
+                    vAmpel.AmpelFarbe = AmpelZustand.Rot;
+                    break;
+            }
+
+            return vAmpel;
+        }
+
+
+
+        /*
         public void Blinken()                       //setzt zustand auf Blinken, braucht keinen rückgabe wert
         {
             if (AmpelFarbe == AmpelZustand.Gruen)
                 AmpelFarbe = AmpelZustand.Gruenblinken;
             else if (AmpelFarbe == AmpelZustand.Gruenblinken)
+                AmpelFarbe = AmpelZustand.GruenzuGelb;
+            else if (AmpelFarbe == AmpelZustand.GruenzuGelb)
                 AmpelFarbe = AmpelZustand.Gruen;
         }
         public static VerkehrsAmpel operator ++(VerkehrsAmpel vAmpel)
         {
-            //if (vAmpel.AmpelFarbe == AmpelZustand.Gruenblinken)
-            //    vAmpel.AmpelFarbe = AmpelZustand.GruenzuGelb;
-            //else
-            vAmpel.AmpelFarbe = (AmpelZustand)(((int)vAmpel.AmpelFarbe + 1) % 6);
+            if (vAmpel.AmpelFarbe == AmpelZustand.Gruenblinken)
+                vAmpel.AmpelFarbe = AmpelZustand.GruenzuGelb;
+            else
+                vAmpel.AmpelFarbe = (AmpelZustand)(((int)vAmpel.AmpelFarbe + 1) % 6);
 
             return vAmpel;
-        }
+        } */
 
         public override string ToString() => ($"Verkehrsampel: Ampelzustand: {AmpelFarbe}\n Ort: {AmpelOrt} ");
     }

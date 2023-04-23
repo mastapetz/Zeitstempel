@@ -11,15 +11,28 @@ namespace AmpelHW
         public FussGaengerAmpel(string ort, AmpelZustand farbe = AmpelZustand.Gruen) : base(ort, farbe)
         {
         }
-        public void Blinken()                       //setzt zustand auf Blinken, braucht keinen rückgabe wert
-        {
-            AmpelFarbe = AmpelZustand.Gruenblinken;
-        }
+
         public static FussGaengerAmpel operator ++(FussGaengerAmpel fAmpel)
         {
-            //vAmpel.AmpelFarbe++;
-            fAmpel.AmpelFarbe = (AmpelZustand)(((int)fAmpel.AmpelFarbe + 1) % 2);
+            switch (fAmpel.AmpelFarbe)
+            {
+                case AmpelZustand.Rot:
+                    fAmpel.AmpelFarbe = AmpelZustand.Gruen;
+                    break;
+                case AmpelZustand.Gruen:
+                    fAmpel.AmpelFarbe = AmpelZustand.Gruenblinken;
+                    break;
+                case AmpelZustand.Gruenblinken:
+                    fAmpel.AmpelFarbe = AmpelZustand.Rot;
+                    break;
+                default:
+                    fAmpel.AmpelFarbe = AmpelZustand.Rot;
+                    break;
+            }
 
+
+            //vAmpel.AmpelFarbe++;
+            //fAmpel.AmpelFarbe = (AmpelZustand)(((int)fAmpel.AmpelFarbe + 1) % 2);
             return fAmpel;
         }
 

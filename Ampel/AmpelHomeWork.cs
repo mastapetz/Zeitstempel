@@ -49,31 +49,35 @@ namespace AmpelHW
     {
         static void Main(string[] args)
         {
-            //VerkehrsAmpel amPlatz1 = new VerkehrsAmpel("Am Platz 1");
-            VerkehrsAmpel amPlatz2 = new VerkehrsAmpel("Am Platz 2", AmpelZustand.Rot);
-            //FussGaengerAmpel amPlatzF1 = new FussGaengerAmpel("Am Platz F1", AmpelZustand.Rot);
+            /*
+             * VerkehrsAmpel amPlatz1 = new VerkehrsAmpel("Am Platz 1");
+             * Console.WriteLine(amPlatz1);
+             * Console.WriteLine("====== Am Platz 1");
+             * for (int i = 0; i < 5; i++)
+             * {
+             *    Console.WriteLine(amPlatz1);
+             *    amPlatz1.Blinken();
+             *    ++amPlatz1;
+             *    Console.WriteLine(amPlatzF1);
+             *}
+             */
 
-            //Console.WriteLine(amPlatz1);
-            //Console.WriteLine("====== Am Platz 1");
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    Console.WriteLine(amPlatz1);
-            //    amPlatz1.Blinken();
-            //    ++amPlatz1;
-            //    Console.WriteLine(amPlatzF1);
-            //}
-            Console.WriteLine(amPlatz2);
-            Console.WriteLine("====== Am Platz 2");
+            VerkehrsAmpel amPlatz2 = new VerkehrsAmpel("Am Platz 2", AmpelZustand.Rot);
+            FussGaengerAmpel amPlatzF1 = new FussGaengerAmpel("Am Platz F1", AmpelZustand.Gruen);
             for (int i = 0; i < 12; i++)
             {
-                //Console.WriteLine(amPlatz2); //Wenn vor Blinken() wird Grünblinken nie angezeigt
-                //Console.WriteLine(amPlatz2);
+                //Console.WriteLine(amPlatz2); //Wenn vor Blinken() wird Grünblinken nie angezeigt ????
 
-                amPlatz2.Blinken();
-                Console.WriteLine(amPlatz2);
-                amPlatz2++;
+                Console.WriteLine(amPlatz2 + "\n" + amPlatzF1);
+                //amPlatz2.Blinken();
+                Console.WriteLine("---------");
                 //Console.WriteLine(amPlatzF1);
 
+                //Console.WriteLine(amPlatz2);
+                if (amPlatzF1.AmpelFarbe == AmpelZustand.Rot)
+                    ++amPlatz2;
+                if (amPlatz2.AmpelFarbe == AmpelZustand.Rot)
+                    amPlatzF1++;
             }
 
         }
