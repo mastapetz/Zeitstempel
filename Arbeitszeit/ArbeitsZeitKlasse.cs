@@ -85,7 +85,8 @@ namespace Arbeitszeit
 
         public override string ToString()
         {
-            return $"Eingangszeit: {_start}  Endzeit: {_end} Dauer: {_zeit()}";
+            return $"Eingangszeit: {_start}  Endzeit: {_end} Dauer: {_zeit()}"; //funktioniert auch mit Properties (in diesem fall Start, End, Zeit)
+                                                                                //bei schreib zugriff ist es aber besser die Properties zu verwenden und nicht die Attribute
         }
 
     }
