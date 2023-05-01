@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arbeitszeit", "Arbeitszeit\Arbeitszeit.csproj", "{1E31DE1E-91B5-4642-AA8E-7049B395D872}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmpelHW", "Ampel\AmpelHW.csproj", "{EBBA04B9-D84B-47DD-896B-36152D04DFB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmpelHW", "Ampel\AmpelHW.csproj", "{EBBA04B9-D84B-47DD-896B-36152D04DFB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HUVokabelTrainer", "HUVokabelTrainer\HUVokabelTrainer.csproj", "{D522D3BD-5C26-48CC-B552-0B8B8EBD7934}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{EBBA04B9-D84B-47DD-896B-36152D04DFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBBA04B9-D84B-47DD-896B-36152D04DFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBBA04B9-D84B-47DD-896B-36152D04DFB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D522D3BD-5C26-48CC-B552-0B8B8EBD7934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D522D3BD-5C26-48CC-B552-0B8B8EBD7934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D522D3BD-5C26-48CC-B552-0B8B8EBD7934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D522D3BD-5C26-48CC-B552-0B8B8EBD7934}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

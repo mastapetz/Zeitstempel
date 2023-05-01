@@ -1,0 +1,5 @@
+﻿Katze;cat
+Hund;dog
+Tisch;table
+Sessel;chair
+Lampe;lamp
