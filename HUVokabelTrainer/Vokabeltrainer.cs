@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HUVokabelTrainer
 {
-    internal class Vokabeltrainer : IComparable<string>
+    internal class Vokabeltrainer
     {
-        private List<string> _woerter = new List<string>();
+        private List<string> _woerter; // = new List<string>();
         private int _index;
         private Random _random;
         string[] lines;
-        private int _ok;
-        private int _nok;
+
+        public int Count { get { return _woerter.Count; } }
 
         public int OK
         {
@@ -30,15 +31,11 @@ namespace HUVokabelTrainer
 
         public string RandomWord()
         {
-
-
-
-            string rndWord = "Blabla";
-            return rndWord;
-
-
-
-
+            //_index = _random.Next(0, lines.Length);
+            _index = _random.Next(_woerter.Count / 2);
+            string rndWordDeutsch = _woerter[_index * 2];
+            //string rndWordE = rndWordTeile[1];
+            return rndWordDeutsch;
         }
 
         public bool Compare(string word)
@@ -49,21 +46,30 @@ namespace HUVokabelTrainer
             //Wort aus Liste entfernen
             //wenn falsch
             //NOK++
-            return false;
+            if (word == _woerter[_index * 2 + 1])
+            {
+                OK++;
+                _woerter.RemoveAt(_index * 2);
+                _woerter.RemoveAt(_index * 2);
+                return true;
+            }
+            else
+            {
+                NOK++;
+                return false;
+            }
 
 
 
         }
 
-        public int CompareTo(string? other)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Vokabeltrainer(string path)
         {
+            _random = new Random();
             lines = File.ReadAllLines(path);
-
+            _woerter = new List<string>();
             foreach (string line in lines)
             {
                 string[] wortPaar = line.Split(';');
@@ -72,12 +78,8 @@ namespace HUVokabelTrainer
 
             }
 
-            _random = new Random();
-            _index = _random.Next(lines.Length);
-            OK = _ok;
-            NOK = _nok;
-
-
+            OK = 0;
+            NOK = 0;
         }
     }
 }

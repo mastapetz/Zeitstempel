@@ -51,7 +51,7 @@ namespace HUVokabelTrainer
             string path = "../../../Vokabel.txt";
             Vokabeltrainer v = new Vokabeltrainer(path);
 
-            while (true)
+            while (v.Count > 0)
             {
                 Console.Write($"Übersetzung für deutsches Wort {v.RandomWord()}: ");
                 string engWord = Console.ReadLine();
