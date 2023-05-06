@@ -1,0 +1,5 @@
+Peter;1000
+Mary;1500
+Franz;100
+Fritz;300
+
