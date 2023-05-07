@@ -35,7 +35,7 @@ namespace Aufteilen
     {
         static void Main(string[] args)
         {
-            string path = @"../../../urlaub.txt";
+            string path = "../../../urlaub.txt";
 
             // Einlesen des Textfiles
             // Abspeichern als Array
