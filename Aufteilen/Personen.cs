@@ -35,7 +35,7 @@ namespace Aufteilen
                     continue;
                 else
                     // Wenn Betrag über 0 in diesem Schritt => Schulden ausgeben
-                    result += $" An {eintrag.Key:F2}  Betrag Schuldig {eintrag.Value:F2}\n";
+                    result += $" An {eintrag.Key}  Betrag Schuldig {eintrag.Value:F2}\n";
 
             }
 
